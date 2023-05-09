@@ -61,3 +61,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+YBHandyListDemo/CollectionView 简单用例/View/TestCollectionNibCell.m

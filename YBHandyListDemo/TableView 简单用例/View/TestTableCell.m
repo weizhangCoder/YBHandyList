@@ -13,6 +13,8 @@
 @interface TestTableCell () <YBHTableCellProtocol>
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) TestTableModel *model;
+
+@property (nonatomic, strong) UILabel *nameLabel;
 @end
 
 @implementation TestTableCell
@@ -22,6 +24,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self.contentView addSubview:self.button];
+        
     }
     return self;
 }
@@ -43,11 +46,11 @@
     [self.button setTitle:(model.shouldMagnify ? @"缩小" : @"放大") forState:UIControlStateNormal];
 }
 
-+ (CGFloat)ybht_heightForCellWithConfig:(nonnull id<YBHTableCellConfig>)config reuseIdentifier:(nonnull NSString *)reuseIdentifier indexPath:(nonnull NSIndexPath *)indexPath {
-    //根据提供的数据计算返回高度
-    TestTableModel *model = config.ybht_model;
-    return model.shouldMagnify ? 100 : UITableViewAutomaticDimension;
-}
+//+ (CGFloat)ybht_heightForCellWithConfig:(nonnull id<YBHTableCellConfig>)config reuseIdentifier:(nonnull NSString *)reuseIdentifier indexPath:(nonnull NSIndexPath *)indexPath {
+//    //根据提供的数据计算返回高度
+//    TestTableModel *model = config.ybht_model;
+//    return model.shouldMagnify ? 100 : UITableViewAutomaticDimension;
+//}
 
 - (void)ybht_didSelectedAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"\n%@ 被点击了", self.textLabel.text);
@@ -73,4 +76,12 @@
     return _button;
 }
 
+- (UILabel *)nameLabel{
+    if(!_nameLabel){
+        _nameLabel = [[UILabel alloc]init];
+        _nameLabel.font = [UIFont systemFontOfSize:14];
+        _nameLabel.textColor = [UIColor blackColor];
+    }
+    return _nameLabel;
+}
 @end
